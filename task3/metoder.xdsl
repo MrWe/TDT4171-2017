@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network2" numsamples="1000" discsamples="10000">
+	<nodes>
+		<decision id="drink">
+			<state id="Beer" />
+			<state id="Cognac" />
+			<state id="Appletini" />
+			<state id="Strawberry_daiquiri" />
+			<state id="Jaeger_shot" />
+			<state id="Irish_coffee" />
+		</decision>
+		<cpt id="Have_a_job">
+			<state id="yes" />
+			<state id="no" />
+			<probabilities>0.9 0.1</probabilities>
+		</cpt>
+		<cpt id="Out_Night_before">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Have_a_job</parents>
+			<probabilities>0.2 0.8 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Node1">
+			<state id="No" />
+			<state id="little" />
+			<state id="very" />
+			<parents>drink Out_Night_before</parents>
+			<probabilities>0.7000000000000001 0.2000000000000001 0.09999999999999987 0.5555555555555555 0.2222222222222223 0.2222222222222223 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987 0.7000000000000001 0.2000000000000001 0.09999999999999987</probabilities>
+		</cpt>
+		<cpt id="Node2">
+			<state id="broke" />
+			<state id="some" />
+			<state id="loaded" />
+			<parents>Out_Night_before Have_a_job drink</parents>
+			<probabilities>0.1 0.5 0.4 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.1 0.9 0 0.5 0.5 0.1 0.6 0.3 0 0.2 0.8 0 0.2 0.8 0 0.2 0.8 0 0.1 0.9 0 0.2 0.8 0.02857142857142857 0.4857142857142857 0.4857142857142858 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.1 0.9 0 0.5 0.5 0.1 0.45 0.45 0 0.2 0.8 0 0.2 0.8 0 0.2 0.8 0 0.1 0.9 0 0.2 0.8</probabilities>
+		</cpt>
+		<utility id="Node7">
+			<parents>Node1</parents>
+			<utilities>-0 -2 -5</utilities>
+		</utility>
+		<utility id="Umoney">
+			<parents>Node2</parents>
+			<utilities>-5 -2 0</utilities>
+		</utility>
+		<cpt id="Location">
+			<state id="Lyche" />
+			<state id="Wildside" />
+			<state id="Home" />
+			<state id="WorkWork" />
+			<state id="Cellar" />
+			<parents>drink</parents>
+			<probabilities>0.6 0 0.2 0.1 0.1 0.1 0.1 0.6 0 0.2 0.7 0.1 0 0 0.2 0.9 0 0.1 0 0 0 0 0.1 0 0.9 0.2 0 0.8 0 0</probabilities>
+		</cpt>
+		<utility id="Ulocation">
+			<parents>Location</parents>
+			<utilities>-2 -4 0 -3 0</utilities>
+		</utility>
+		<utility id="Node14">
+			<parents>drink</parents>
+			<utilities>0 -3 -2 -2 -4 -3</utilities>
+		</utility>
+		<cpt id="Has_Eaten">
+			<state id="Little" />
+			<state id="Medium" />
+			<state id="Alot" />
+			<parents>drink</parents>
+			<probabilities>0.7 0.2 0.1 0.1 0.3 0.6 0.3333333333333333 0.3333333333333333 0.3333333333333334 0.3333333333333333 0.3333333333333333 0.3333333333333334 0 0 1 0.5 0.2 0.3</probabilities>
+		</cpt>
+		<utility id="Ueaten">
+			<parents>Has_Eaten</parents>
+			<utilities>-5 -1 0</utilities>
+		</utility>
+		<cpt id="Exercise_due_tomorrow">
+			<state id="yes" />
+			<state id="no" />
+			<parents>drink Have_a_job</parents>
+			<probabilities>0.9 0.1 0.9 0.1 0.8 0.2 0.4 0.6 0.5 0.5 0.5 0.5 0.3 0.7 0.3 0.7 0.1 0.9 0.1 0.9 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<utility id="UExercise">
+			<parents>Exercise_due_tomorrow</parents>
+			<utilities>0 -5</utilities>
+		</utility>
+		<cpt id="Is_tired">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Out_Night_before drink</parents>
+			<probabilities>0.8 0.2 0 1 0.2 0.8 0.2 0.8 0 1 1 0 0.5 0.5 0.2 0.8 0.4 0.6 0.4 0.6 0.1 0.9 0.3 0.7</probabilities>
+		</cpt>
+		<utility id="Utired">
+			<parents>Is_tired</parents>
+			<utilities>-5 0</utilities>
+		</utility>
+		<cpt id="Node24">
+			<state id="Yes" />
+			<state id="no" />
+			<parents>drink</parents>
+			<probabilities>0.8 0.2 0.9 0.1 0.9 0.1 0.3 0.7 0.1 0.9 0.6 0.4</probabilities>
+		</cpt>
+		<cpt id="Ask_for_new_drink">
+			<state id="True" />
+			<state id="False" />
+			<parents>Node24</parents>
+			<probabilities>0.05 0.95 0.95 0.05</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Network2" faultnameformat="nodestate">
+			<node id="Node1">
+				<name>Hangover</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>734 455 783 485</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Node2">
+				<name>Money</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1146 481 1195 511</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="drink">
+				<name>What drink to buy</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>720 208 815 267</position>
+				<barchart active="true" width="154" height="131" />
+			</node>
+			<node id="Node7">
+				<name>Uhangover</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>710 638 811 688</position>
+				<barchart active="true" width="128" height="126" />
+			</node>
+			<node id="Umoney">
+				<name>Umoney</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1107 642 1199 681</position>
+				<barchart active="true" width="128" height="126" />
+			</node>
+			<node id="Out_Night_before">
+				<name>Out Night before</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>998 261 1089 317</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Location">
+				<name>Location</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>536 395 592 430</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Ulocation">
+				<name>Ulocation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>530 640 595 672</position>
+				<barchart active="true" width="128" height="126" />
+			</node>
+			<node id="Have_a_job">
+				<name>Have a job</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1253 270 1319 311</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node14">
+				<name>UDrink</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>719 55 777 87</position>
+				<barchart active="true" width="157" height="132" />
+			</node>
+			<node id="Has_Eaten">
+				<name>Has Eaten</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>305 220 417 275</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Ueaten">
+				<name>Ueaten</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>333 500 389 532</position>
+				<barchart active="true" width="128" height="126" />
+			</node>
+			<node id="Exercise_due_tomorrow">
+				<name>Exercise due tomorrow</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>956 127 1048 184</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="UExercise">
+				<name>UExercise</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1182 117 1253 149</position>
+				<barchart active="true" width="128" height="126" />
+			</node>
+			<node id="Is_tired">
+				<name>Is tired</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>959 479 1008 509</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Utired">
+				<name>Utired</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>955 645 1004 677</position>
+				<barchart active="true" width="127" height="126" />
+			</node>
+			<node id="Node24">
+				<name>Tasted good</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>424 69 478 102</position>
+				<barchart active="true" />
+			</node>
+			<node id="Ask_for_new_drink">
+				<name>Ask for new drink</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>203 58 298 117</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
